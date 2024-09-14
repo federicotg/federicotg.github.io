@@ -1,42 +1,66 @@
 <html>
-    <head>
-        <title>Acer Aspire 1 A114-32</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Cache-Control" content="max-age=300">
-        <meta http-equiv="Expires" content="300">
-        <style>
-            body {
-                background-color: white;
-            }
-            ul, li{
-                margin-left: 0em;
-            }
-            img{
-                max-width: 100%;
-            }
-            h1, h2{
-                text-align: center;
-            }
-        </style>
-    </head>
+
+<head>
+    <title>Acer Aspire 1 A114-32</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="max-age=300">
+    <meta http-equiv="Expires" content="300">
+    <style>
+        body {
+            background-color: white;
+        }
+
+        ul,
+        li {
+            margin-left: 0em;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
 <body>
-<h1>Acer Aspire 1 A114-32</h1>
-<h2>$ 50.000</h2>
-<img src="./aspire.webp" alt="Acer Aspire One"/>
-<ul>
-    <li>Procesador <a href="https://www.intel.la/content/www/xl/es/products/sku/128988/intel-celeron-processor-n4000-4m-cache-up-to-2-60-ghz/specifications.html" target="_blank">Intel Celeron N4000</a> (2 núcleos)</li>
-    <li>4 GB de memoria RAM</li>
-    <li>Tarjeta gráfica Intel UHD 600</li>
-    <li>Pantalla de 14" FHD 1920 x 1080</li>
-    <li>Almacenamiento eMMC de 64 GB</li>
-    <li>Salud de la batería: 78%</li>
-    <li>Wi-Fi 802.11ac</li>
-    <li>Bluetooth 4.0</li>
-    <li>Teclado inglés</li>
-    <li>Puertos: 1 x USB 3.0, 2 x USB 2.0, 1 x HDMI, 1 x Ethernet</li>
-    <li>Lector de tarjeta SD</li>
-    <li>Jack de auriculares</li>
-    <li>Fanless</li>
-</ul>
+    <h1>Acer Aspire 1 A114-32</h1>
+    <h2>$ 50.000</h2>
+    <img src="./aspire.webp" alt="Acer Aspire One" />
+    <ul>
+        <li>Procesador <a
+                href="https://www.intel.la/content/www/xl/es/products/sku/128988/intel-celeron-processor-n4000-4m-cache-up-to-2-60-ghz/specifications.html"
+                target="_blank">Intel Celeron N4000</a> (2 núcleos)</li>
+        <li>4 GB de memoria RAM</li>
+        <li>Tarjeta gráfica Intel UHD 600</li>
+        <li>Pantalla de 14" FHD 1920 x 1080</li>
+        <li>Almacenamiento eMMC de 64 GB</li>
+        <li>Salud de la memoria eMMC: 10% usado.</li>
+    </ul>
+    <pre>
+        sudo mmc extcsd read /dev/mmcblk0 | grep "Life Time"
+        eMMC Life Time Estimation A [EXT_CSD_DEVICE_LIFE_TIME_EST_TYP_A]: 0x01
+        eMMC Life Time Estimation B [EXT_CSD_DEVICE_LIFE_TIME_EST_TYP_B]: 0x01
+    </pre>
+    <ul>
+        <li>Salud de la batería: 78%</li>
+    </ul>
+    <pre>
+        perl -E "say $(cat /sys/class/power_supply/BAT1/subsystem/BAT1/charge_full) / $(cat /sys/class/power_supply/BAT1/subsystem/BAT1/charge_full_design) * 100"
+        77.5675675675676
+</pre>
+    <ul>
+        <li>Wi-Fi 802.11ac</li>
+        <li>Bluetooth 4.0</li>
+        <li>Teclado inglés</li>
+        <li>Puertos: 1 x USB 3.0, 2 x USB 2.0, 1 x HDMI, 1 x Ethernet</li>
+        <li>Lector de tarjeta SD</li>
+        <li>Jack de auriculares</li>
+        <li>Fanless</li>
+    </ul>
 </body>
+
 </html>
