@@ -1,47 +1,71 @@
 <html>
-    <head>
-        <title>DELL Latitude 5411</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Cache-Control" content="max-age=300">
-        <meta http-equiv="Expires" content="300">
-        <style>
-            body {
-                background-color: white;
-            }
-            ul, li{
-                margin-left: 0em;
-            }
-            img{
-                max-width: 100%;
-            }
-            h1, h2{
-                text-align: center;
-            }
-        </style>
-    </head>
+
+<head>
+    <title>DELL Latitude 5411</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="max-age=300">
+    <meta http-equiv="Expires" content="300">
+    <style>
+        body {
+            background-color: white;
+        }
+
+        ul,
+        li {
+            margin-left: 0em;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+        pre{
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+
 <body>
-<h1>DELL Latitude 5411</h1>
-<h2>$ 750.000</h2>
-<img src="./5411.webp" alt="DELL Latitude 5411"/>
-<ul>
-    <li>Procesador <a href="https://ark.intel.com/content/www/us/en/ark/products/201897/intel-core-i7-10850h-processor-12m-cache-up-to-5-10-ghz.html" target="_blank">10th Generation Intel Core i7-10850H</a> (6 Core, 12M cache, 2.7GHz, 5.1GHz Turbo, 35W vPro)</li>
-    <li>Memoria RAM: 32 GB DDR4</li>
-    <li>Tarjeta gráfica Intel UHD con Thunderbolt para Intel Core i7-10850H de 10ª generación</li>
-    <li>Pantalla: 14" FHD (1920 x 1080) Anti-Glare Non-Touch, 220 nits</li>
-    <li>Almacenamiento: Unidad de estado sólido PCIe NVMe de 256 GB</li>
-    <li>Batería: 4 celdas 68Whr (2 horas de duración de la batería con uso normal)</li>
-    <li>Adaptador de 90 W</li>
-    <li>Carga rápida por USB-C</li>
-    <li>Wi-Fi 6 802.11ax</li>
-    <li>Bluetooth 5.1</li>
-    <li>Teclado: español latinoamericano</li>
-    <li>2 puertos USB 3.2 de 1ª generación tipo A</li>
-    <li>1 puerto USB 3.2 de 1ª generación tipo A con PowerShare</li>
-    <li>1 puerto USB 3.2 de 2ª generación Type-C DisplayPort 1.4 / Power Delivery / Thunderbolt</li>
-    <li>1 puerto HDMI 2.0</li>
-    <li>1 puerto Ethernet</li>
-    <li>Lector de tarjeta MicroSD</li>
-    <li>Jack de auriculares + micrófono</li>
-</ul>
+    <h1>DELL Latitude 5411</h1>
+    <h2>$ 750.000</h2>
+    <img src="./5411.webp" alt="DELL Latitude 5411" />
+    <ul>
+        <li>Procesador <a
+                href="https://ark.intel.com/content/www/us/en/ark/products/201897/intel-core-i7-10850h-processor-12m-cache-up-to-5-10-ghz.html"
+                target="_blank">10th Generation Intel Core i7-10850H</a> (6 Core, 12M cache, 2.7GHz, 5.1GHz Turbo, 35W vPro)</li>
+        <li>Memoria RAM: 32 GB DDR4</li>
+        <li>Tarjeta gráfica Intel UHD con Thunderbolt para Intel Core i7-10850H de 10ª generación</li>
+        <li>Pantalla: 14" FHD (1920 x 1080) Anti-Glare Non-Touch, 220 nits</li>
+        <li>Almacenamiento: Unidad de estado sólido PCIe NVMe de 256 GB (12% de uso)</li>
+        <li>Salud del SSD: 12% de desgaste.</li>
+    </ul>
+    <pre>
+    sudo smartctl -a /dev/nvme0
+    Available Spare:                    100%
+    Available Spare Threshold:          50%
+    Percentage Used:                    12%
+    Data Units Read:                    17.688.924 [9,05 TB]
+    Data Units Written:                 24.910.592 [12,7 TB]
+    </pre>
+    <ul>
+        <li>Batería: 4 celdas 68Whr (2 horas de duración de la batería con uso normal)</li>
+        <li>Adaptador de 90 W</li>
+        <li>Carga rápida por USB-C</li>
+        <li>Wi-Fi 6 802.11ax</li>
+        <li>Bluetooth 5.1</li>
+        <li>Teclado: español latinoamericano</li>
+        <li>2 puertos USB 3.2 de 1ª generación tipo A</li>
+        <li>1 puerto USB 3.2 de 1ª generación tipo A con PowerShare</li>
+        <li>1 puerto USB 3.2 de 2ª generación Type-C DisplayPort 1.4 / Power Delivery / Thunderbolt</li>
+        <li>1 puerto HDMI 2.0</li>
+        <li>1 puerto Ethernet</li>
+        <li>Lector de tarjeta MicroSD</li>
+        <li>Jack de auriculares + micrófono</li>
+    </ul>
 </body>
+
 </html>
