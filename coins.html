@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <title>Acer Aspire 1 A114-32</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="max-age=300">
+    <meta http-equiv="Expires" content="300">
+    <style>
+        body {
+            background-color: white;
+        }
+
+        ul,
+        li {
+            margin-left: 0em;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+        pre{
+            font-size: 1.2em;
+        }
+        .strike{
+            text-decoration: line-through;
+        }
+    </style>
+    <script type="text/javascript">
+        const goldPerCoin = 0.2354;
+        const factor = 0.95;
+
+        async function xau(){
+            return fetch('https://api.gold-api.com/price/XAU')
+                .then(r => r.json())
+                .then(xau => xau.price);
+        }
+
+        async function blue(){
+            return fetch('https://criptoya.com/api/dolar')
+                .then(r => r.json())
+                .then(dollar => (dollar.blue.ask + dollar.blue.bid) / 2);
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+
+            const xauPrice = await xau();
+            const bluePrice = await blue();
+            const coinPriceARS = Math.floor(xauPrice * goldPerCoin * bluePrice);
+            const coinPriceUSD = Math.floor(xauPrice * goldPerCoin);
+
+            const arsFormatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' });
+            const usdFormatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'USD' });
+
+            document.querySelector('#ars').textContent = arsFormatter.format(coinPriceARS.toFixed(2));
+            document.querySelector('#usd').textContent = arsFormatter.format(coinPriceUSD.toFixed(2));
+        });
+
+    </script>
+</head>
+
+<body>
+    <h1>Soberano</h1>
+    <ul>
+        <li class="strike" id="ars"></li>
+        <li class="strike" id="usd"></li>
+    </ul>
+    
+    
+</body>
+
+</html>
