@@ -29,10 +29,13 @@
         .strike{
             text-decoration: line-through;
         }
+        #list{
+            display: none;
+        }
     </style>
     <script type="text/javascript">
         const goldPerCoin = 0.2354;
-        const factor = 0.95;
+        const discountPct = 0.1;
 
         async function xau(){
             return fetch('https://api.gold-api.com/price/XAU')
@@ -50,14 +53,24 @@
 
             const xauPrice = await xau();
             const bluePrice = await blue();
-            const coinPriceARS = Math.floor(xauPrice * goldPerCoin * bluePrice);
-            const coinPriceUSD = Math.floor(xauPrice * goldPerCoin);
+            const coinPriceUSD = xauPrice * goldPerCoin;
 
             const arsFormatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' });
             const usdFormatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'USD' });
+            const pctFormatter = new Intl.NumberFormat('es-AR', { style: 'percent'});
 
-            document.querySelector('#ars').textContent = arsFormatter.format(coinPriceARS.toFixed(2));
+            document.querySelector('#troy').textContent = usdFormatter.format(xauPrice.toFixed(2));
+            document.querySelector('#usdPrice').textContent = arsFormatter.format(bluePrice.toFixed(2));
+
+            document.querySelector('#ars').textContent = arsFormatter.format((coinPriceUSD * bluePrice).toFixed(2));
             document.querySelector('#usd').textContent = arsFormatter.format(coinPriceUSD.toFixed(2));
+
+            document.querySelector('#pct').textContent = pctFormatter.format(discountPct.toFixed(2));
+
+            document.querySelector('#arsFinal').textContent = arsFormatter.format((coinPriceUSD * (1-discountPct) * bluePrice).toFixed(2));
+            document.querySelector('#usdFinal').textContent = arsFormatter.format((coinPriceUSD * (1-discountPct)).toFixed(2));
+            document.querySelector('#list').style.display = 'block';
+
         });
 
     </script>
@@ -65,9 +78,14 @@
 
 <body>
     <h1>Soberano</h1>
-    <ul>
-        <li class="strike" id="ars"></li>
-        <li class="strike" id="usd"></li>
+
+    <ul id="list">
+        <li>Contenido de oro: 0,2354 onzas troy</li>
+        <li>Cotización de la onza troy de oro: USD <span id="troy"></span></li>
+        <li>Cotización del dólar: <span id="usdPrice"></span></li>
+        <li>Valor del Soberano USD <span id="usd"></span> (Pesos <span id="ars"></span>)</li>
+        <li>Descuento: <span id="pct"></span> <span id="disc"></span></li>
+        <li>Total USD <span id="usdFinal"></span> (Pesos <span id="arsFinal"></span>)</li>
     </ul>
     
     
