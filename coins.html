@@ -37,13 +37,13 @@
         const goldPerCoin = 0.2354;
         const discountPct = 0.1;
 
-        async function xau(){
+        function xau(){
             return fetch('https://api.gold-api.com/price/XAU')
                 .then(r => r.json())
                 .then(xau => xau.price);
         }
 
-        async function blue(){
+        function blue(){
             return fetch('https://criptoya.com/api/dolar')
                 .then(r => r.json())
                 .then(dollar => (dollar.blue.ask + dollar.blue.bid) / 2);
@@ -51,10 +51,9 @@
 
         document.addEventListener('DOMContentLoaded', async () => {
 
-            const xauPrice = await xau();
-            const bluePrice = await blue();
+            let [xauPrice , bluePrice] = await Promise.all([xau(), blue()]);
+            
             const coinPriceUSD = xauPrice * goldPerCoin;
-
             const arsFormatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' });
             const usdFormatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'USD' });
             const pctFormatter = new Intl.NumberFormat('es-AR', { style: 'percent'});
@@ -63,12 +62,12 @@
             document.querySelector('#usdPrice').textContent = arsFormatter.format(bluePrice.toFixed(2));
 
             document.querySelector('#ars').textContent = arsFormatter.format((coinPriceUSD * bluePrice).toFixed(2));
-            document.querySelector('#usd').textContent = arsFormatter.format(coinPriceUSD.toFixed(2));
+            document.querySelector('#usd').textContent = usdFormatter.format(coinPriceUSD.toFixed(2));
 
             document.querySelector('#pct').textContent = pctFormatter.format(discountPct.toFixed(2));
 
             document.querySelector('#arsFinal').textContent = arsFormatter.format((coinPriceUSD * (1-discountPct) * bluePrice).toFixed(2));
-            document.querySelector('#usdFinal').textContent = arsFormatter.format((coinPriceUSD * (1-discountPct)).toFixed(2));
+            document.querySelector('#usdFinal').textContent = usdFormatter.format((coinPriceUSD * (1-discountPct)).toFixed(2));
             document.querySelector('#list').style.display = 'block';
 
         });
@@ -81,11 +80,11 @@
 
     <ul id="list">
         <li>Contenido de oro: 0,2354 onzas troy</li>
-        <li>Cotización de la onza troy de oro: USD <span id="troy"></span></li>
+        <li>Cotización de la onza troy de oro: <span id="troy"></span></li>
         <li>Cotización del dólar: <span id="usdPrice"></span></li>
-        <li>Valor del Soberano USD <span id="usd"></span> (Pesos <span id="ars"></span>)</li>
+        <li>Valor del Soberano <span id="usd"></span> (<span id="ars"></span>)</li>
         <li>Descuento: <span id="pct"></span> <span id="disc"></span></li>
-        <li>Total USD <span id="usdFinal"></span> (Pesos <span id="arsFinal"></span>)</li>
+        <li>Total USD <span id="usdFinal"></span> (<span id="arsFinal"></span>)</li>
     </ul>
     
     
